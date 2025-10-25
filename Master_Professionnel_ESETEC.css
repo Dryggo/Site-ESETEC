@@ -1,0 +1,96 @@
+/*reinitialisation générale pour eviter les marges / paddings par defaut*/
+/* ANNIMATION */
+.master {
+  margin: 20%;
+  font-size: 2rem;
+  white-space: nowrap; /* texte sur une seule ligne pour grands écrans */
+  animation: fullAnimation 20s linear infinite;
+  border: 2px solid #0ff;
+  border-radius: 50px;
+  text-align: center;
+  overflow-wrap: break-word; /* permet au texte de se couper si nécessaire */
+}
+/* Adaptation pour tablettes (max 1024px) */
+/* Tablettes */
+@media (max-width: 1024px) {
+  .master {
+    margin: 10%;
+    font-size: 1.5rem;
+    white-space: normal; /* autorise le retour à la ligne */
+  }
+}
+
+/* Smartphones */
+@media (max-width: 600px) {
+  .master {
+    margin: 5%;
+    font-size: 1rem;
+    border-radius: 25px;
+    animation: fullAnimation 15s linear infinite;
+    white-space: normal; /* autorise le retour à la ligne */
+  }
+}
+@keyframes fullAnimation {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%) scale(1) rotate(0deg);
+    color: white;
+    text-shadow: none;
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(0%) scale(1.2) rotate(90deg);
+    color: yellow;
+    text-shadow: 0 0 10px #ff0;
+  }
+  20% {
+    transform: scale(1) rotate(180deg);
+    color: cyan;
+    text-shadow: 0 0 15px #0ff;
+  }
+  30% {
+    transform: scale(1.3) rotate(270deg);
+    color: magenta;
+    text-shadow: 0 0 20px #f0f;
+  }
+  40% {
+    transform: scale(1) rotate(360deg);
+    color: white;
+    text-shadow: 0 0 30px #fff;
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(10px);
+  }
+  52% {
+    transform: translateX(-10px);
+  }
+  54% {
+    transform: translateX(10px);
+  }
+  56% {
+    transform: translateX(0);
+  }
+  60% {
+    opacity: 0.5;
+    text-shadow: none;
+  }
+  70% {
+    opacity: 1;
+    text-shadow: 0 0 20px #0ff;
+  }
+  80% {
+    opacity: 0.5;
+    color: #444;
+  }
+  90% {
+    opacity: 0;
+    transform: scale(0.8) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-100%) scale(1) rotate(0deg);
+    color: white;
+    text-shadow: none;
+  }
+}

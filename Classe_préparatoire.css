@@ -1,0 +1,370 @@
+/*reinitialisation générale pour eviter les marges / paddings par defaut*/
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.2;
+  color: #333;
+}
+
+/*style sur le menu deroulant*/
+.classe-prepa {
+  background-color: rgb(247, 129, 129); /* couleur de fond gris clair */
+  padding: 20px; /*Espacement intérieur autour des liens */
+  width: 75%; /* largeur de l'image en pourcentage */
+  border-radius: 20px; /*bords du ruban arrondis*/
+  border: 2px solid grey;
+  margin: 40px auto; /*alinéa de 2cm*/
+  max-width: 900px; /*pour la limite de la taille sur l'écran*/
+  box-sizing: border-box;
+}
+.classe-prepa *,
+.classe-prepa a,
+.classe-prepa li {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+  box-sizing: border-box;
+}
+p {
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+footer p {
+  margin-bottom: 0;
+}
+/*cache la case à cocher*/
+#menu-cliquable {
+  display: none;
+}
+
+/*style sur le titre principale cliquable*/
+.menu-titre {
+  cursor: pointer; /*curceur de main au survol*/
+  display: flex; /*prend toute la ligne*/
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  font-size: 200%; /*taille du titre*/
+  font-weight: bold; /*texte (le titre) en gras */
+  color: white; /*couleur bleu foncé*/
+  margin-bottom: 10px; /*espacement sous le titre*/
+  font-family: Open sans;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+/*definir le contenue de la fleche */
+
+/*affichage de la liste si la case est cochée*/
+.fleche {
+  display: inline-block;
+  width: 25px;
+  height: 30px;
+  border-right: 5px solid white;
+  border-bottom: 5px solid white;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+  margin-left: 10px;
+}
+
+#menu-cliquable:checked + label .fleche {
+  transform: rotate(-135deg);
+}
+
+/* animation sur le texte classes préparatoires */
+.texte-anim {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 50px;
+  margin: auto;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+.anime-texte {
+  position: absolute;
+  white-space: nowrap;
+  font-size: clamp(16px, 3vw, 32px);
+  font-weight: bold;
+  padding: 0 20px;
+  /* overflow-wrap: break-word; */
+  animation: defilement 6s ease-in-out infinite alternate;
+}
+
+/* 1. Défilement depuis la gauche */
+@keyframes defilement {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+.texte-anim:hover .anime-texte {
+  animation-play-state: paused;
+}
+
+/*style sur la liste */
+.liste-menu {
+  display: none; /*caché au depart*/
+  list-style: none; /*supprime les numeros par defaut*/
+  padding-left: 0;
+  margin-top: 10px;
+  counter-reset: item; /*réinitialise le compteur */
+  text-transform: uppercase;
+}
+#menu-cliquable:checked ~ .liste-menu {
+  display: block;
+}
+.anime-texte:hover {
+  color: blueviolet;
+  cursor: pointer;
+}
+.liste-menu a {
+  text-decoration: none; /*supprime le soulignement des liens */
+  color: white; /*couleur bleu foncé*/
+  font-weight: bold; /*texte en gras */
+}
+.liste-menu a:hover {
+  color: blue;
+}
+
+/*style des elements de la liste*/
+.liste-menu li {
+  counter-increment: item; /*incrémenter le compteur */
+  margin: 8px 0; /*espacement vertical entre les éléments */
+  padding-left: 30px; /*decalage pour le badge rond */
+  position: relative; /*nécessaire pour positionner le badge */
+  color: #333;
+  font-weight: bold;
+  font-size: 120%;
+}
+
+/*badge rond avec numéro automatique*/
+.liste-menu li::before {
+  content: counter(item); /*affiche le numéro*/
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 22px;
+  height: 22px;
+  background-color: #2196f3; /*un fond bleu clair*/
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 22px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* style sur la présentation */
+.preparatoire {
+  display: block;
+  font-size: 120%;
+  background-color: #fff;
+  padding: 20px /*pour un espacement intérieur*/ clamp(10px, 2vw, 40px); /*deplace un peu le bloc vers la droite*/
+  line-height: 1.5;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.preparatoire * {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+  box-sizing: border-box;
+}
+
+.preparatoire h2 {
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* style sur la présentation */
+#presentation,
+#filieres,
+#Duree-de-la-formation,
+#conditions-acces,
+#debouches {
+  background-color: #ffffff;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/*style sur la présentation et les filières  */
+#presentation h2,
+#filieres h2,
+#Duree-de-la-formation h2,
+#conditions-acces h2,
+#debouches h2 {
+  font-size: 30px;
+  color: #004080;
+  border-left: 4px solid #0077cc;
+  padding-left: 10px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+/* style sur les differentes filiers */
+.filiere {
+  background-color: #f0f4ff;
+  margin-bottom: 20px;
+  margin-top: 15px;
+  padding: 15px 15px 15px 45px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  border-left: 4px solid #3399ff;
+  position: relative;
+}
+
+/* style sur les strong */
+.filiere strong,
+#filieres strong,
+#presentation strong,
+#Duree-de-la-formation strong,
+#conditions-acces strong,
+#debouches strong {
+  display: inline;
+  color: #2196f3;
+}
+
+#filieres ol {
+  padding-left: 20px;
+}
+
+/* style sur la liste des filieres  */
+.liste-filiere {
+  counter-reset: section;
+  padding-left: 0;
+}
+.liste-filiere > li {
+  list-style: none;
+  counter-increment: section;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.liste-filiere > li ::before {
+  content: counter(section) ".";
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #0055aa;
+}
+.filiere ol > li {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-weight: bold;
+  color: brown;
+}
+.filiere span {
+  font-weight: bold;
+  color: #0055aa;
+  text-transform: uppercase;
+}
+
+/* style sur le ol de type=a */
+#filieres ol > li > ol,
+.filiere p {
+  padding-left: 20px;
+  list-style-type: lower-alpha;
+  font-weight: normal;
+  color: #333;
+}
+
+/* style sur le ol de type=a */
+#filieres ol > li > ol > li {
+  margin-bottom: 10px;
+}
+
+/* style sur les ul */
+#filieres ul,
+#Duree-de-la-formation ul,
+#conditions-acces ul,
+#debouches ul {
+  padding-left: 20px;
+  list-style-type: circle;
+  margin-top: 5px;
+}
+
+.filiere ul > li {
+  margin-bottom: 5px;
+  color: #444;
+}
+
+/* style sur le menu deroulant pour les filieres */
+details summary {
+  list-style: none; /*enlève la flèche par defaut*/
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  margin-bottom: 2%;
+}
+
+details summary::after {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #004080;
+  border-bottom: 2px solid #004080;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+}
+details[open] summary::after {
+  transform: rotate(-135deg);
+}
+
+/* style sur les liens des débouchés */
+
+#debouches a,
+#presentation a {
+  text-decoration: none;
+  color: #2196f3;
+  font-size: 18px;
+}
+
+#presentation a:hover,
+#debouches a:hover {
+  color: rgb(245, 8, 166);
+}

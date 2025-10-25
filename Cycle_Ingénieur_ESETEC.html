@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cycle Ingénieur ESETEC</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="Classe_préparatoire.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <!-- ruban et logo -->
+      <div class="entete">
+        <!-- insertion du logo d'esetec -->
+        <img src="image\logo.jpg" alt="logo ESETEC" class="logo" />
+
+        <!-- definition d'ESTEC -->
+        <div class="ruban">
+          <h3>
+            Ministère de l'Enseignement Supérieur et de la Recherche
+            Scientifique Côte d'Ivoire
+          </h3>
+          <h1>Ecole Supérieure de l'Enseignement Technique et Commercial</h1>
+          <h4>Autorisation de création N°956/MES/DESUP/du 08/12/03</h4>
+          <h4>
+            Autorisation d'ouverture et de fonctionnement N°113/MES/DESUP du
+            08/12/03
+          </h4>
+        </div>
+      </div>
+    </header>
+
+    <!-- le bts -->
+    <div class="classe-prepa">
+      <h1></h1>
+      <nav>
+        <!--checkbox cachée qui contole l'affichage-->
+        <input type="checkbox" id="menu-cliquable" />
+        <!--titre cliquable du menu déroulant-->
+        <label for="menu-cliquable" class="menu-titre"
+          ><div class="texte-anim">
+            <div class="anime-texte">cycle ingénieur</div>
+          </div>
+          <!--Fleche dynamique-->
+          <span class="fleche"></span
+        ></label>
+        <!--liste numérotée qui sera affichée ou masquée-->
+        <ol class="liste-menu">
+          <li><a href="#presentation">présentation</a></li>
+          <li><a href="#filieres">Filières</a></li>
+          <li>
+            <a href="#Duree-de-la-formation">Durée de la formation</a>
+          </li>
+          <li>
+            <a href="#conditions-acces">conditions d'accès</a>
+          </li>
+          <li>
+            <a href="#debouches">Débouchés</a>
+          </li>
+        </ol>
+      </nav>
+    </div>
+
+    <!--  -->
+    <div class="preparatoire">
+      <!-- partie de la présentation -->
+      <section id="presentation">
+        <h2>Présentation du Cycle Ingénieur</h2>
+        <p>
+          Le Cycle Ingénieur est une formation supérieure spécialisée qui dure
+          trois (3) ans, accessible après un premier cycle préparatoire ou un
+          diplôme équivalent.
+        </p>
+        <p>
+          Cette formation vise à former des professionnels capables de
+          concevoir, développer et gérer des projets techniques et scientifiques
+          dans divers domaines ( <strong>Informatique</strong>,
+          <strong>Génie Civil</strong>, <strong>Électronique</strong>, etc).
+        </p>
+        <p>
+          Elle combine des enseignements théoriques, pratiques, des projets, des
+          stages en entreprise pour préparer les étudiants à devenir des
+          ingénieurs qualifiés, près à répondre aux besoins industriels et
+          technologiques.
+        </p>
+        <p>
+          À l'<strong>ESETEC</strong>, nous proposons un encardrement de qualité
+          pour former des ingénieurs polyvalents et compétents, capables de
+          répondre aux défis
+          <strong>techniques</strong>, <strong>économiques</strong> et
+          <strong>environnementaux</strong> actuels.
+        </p>
+      </section>
+
+      <!-- partie des filieres -->
+      <section id="filieres">
+        <h2>🎓 Les filieres du Cycle Ingénieur</h2>
+        <p>
+          <strong>ESETEC</strong> offre un large éventail de filières BTS
+          réparties dans les domaines <strong>tertiaire</strong>,
+          <strong>industriel</strong>, <strong>agricole</strong> et
+          <strong>scientifique</strong>
+        </p>
+
+        <ol class="liste-filiere">
+          <!-- 1. Agriculture & et Environnement -->
+
+          <li>
+            <div class="filiere">
+              <details>
+                <summary style="cursor: pointer">
+                  <span>🌿 Énergie, Environnement & Développement durable</span>
+                </summary>
+
+                <ol type="a">
+                  <!-- a. Génie énergetique et développement durable -->
+                  <li>
+                    Génie énergetique et développement durable
+                    <ul>
+                      <p>
+                        Formation axée sur la production et la gestion de
+                        l'énergie, en privilégiant les solutions respectueuses
+                        de l'environnement et durables.
+                      </p>
+                    </ul>
+                  </li>
+
+                  <!-- b. Gestion de l'environnement et qualité des eaux -->
+                  <li>
+                    Gestion de l'environnement et qualité des eaux
+                    <p>
+                      Formation dédiée à la protection de l'environnement, la
+                      gestion des réssources en eau et traitement des polutions.
+                    </p>
+                  </li>
+                </ol>
+              </details>
+            </div>
+          </li>
+
+          <!-- 2.TERTIAIRE -->
+
+          <li>
+            <div class="filiere">
+              <details>
+                <summary style="cursor: pointer">
+                  <span>🏢 TERTIAIRE (finace, assurance , gestion)</span>
+                </summary>
+
+                <ol type="a">
+                  <!-- a.   Études comptables supérieures-->
+                  <li>
+                    Études Comptables Supérieures
+                    <p>
+                      Formations spécialisée en <strong>comptabilité</strong>,
+                      <strong>finance et gestion des entreprises</strong>.
+                    </p>
+                    <p>
+                      Elle prépare aux métiers de l'audit, de la gestion
+                      financière et du controle de gestion .
+                    </p>
+                  </li>
+
+                  <!-- b. Carrière Juridique et Judiciaire -->
+                  <li>
+                    Hautes Études en Assurance
+                    <p>
+                      Pacours qui prépare aux métiers de l'assurance, la
+                      <strong>gestion des risques</strong> et la
+                      <strong
+                        >protection financière des entreprises et des
+                        particuliers</strong
+                      >.
+                    </p>
+                  </li>
+                </ol>
+              </details>
+            </div>
+          </li>
+
+          <!-- 3.Génie Civil Indistrie -->
+
+          <li>
+            <div class="filiere">
+              <details>
+                <summary style="cursor: pointer">
+                  <span
+                    >🏗️ Génie Indistriel , BTP & Ressources Naturelles
+                  </span>
+                </summary>
+
+                <ol type="a">
+                  <!-- a. Génie Civil  -->
+                  <li>
+                    Génie Civil
+                    <p>
+                      Formation axée sur la conception, la construction et la
+                      maintenance des infrastructures (routes, ponts,
+                      bâtiments).
+                    </p>
+                    <p>
+                      Cette filière forme des personnes capables de superviser
+                      des chantiers, assurer la qualité des matériaux et
+                      garantir la sécurité des constructions.
+                    </p>
+                    <p>
+                      Cette filière est idéal pour ceux qui souhaitent
+                      travailler dans le <strong>bâtiment</strong>,et les
+                      <strong>travaux publiques</strong>.
+                    </p>
+                  </li>
+
+                  <!-- b.Génie des procédés chimiques -->
+                  <li>
+                    Génie des procédés chimiques
+                    <p>
+                      Étude des techniques et procédés industriels liés à la
+                      transformation chimique.
+                    </p>
+                    <p>
+                      Cette filière convient aux futurs ingénieurs dans les
+                      <strong>industries chimiques</strong>,
+                      <strong>pharmacetiques</strong> ou
+                      <strong>agroalimentaires</strong>.
+                    </p>
+                  </li>
+
+                  <!-- c. mines et pétrole -->
+                  <li>
+                    Mines et Pétrole
+                    <p>
+                      Formation spécialisée dans l'exploitation des ressources
+                      minières et pétrolières, avec un accent sur les techniques
+                      d'extraction et la gestion des impacts environnementaux.
+                    </p>
+                  </li>
+                </ol>
+              </details>
+            </div>
+          </li>
+
+          <!-- 4.Informatique & Technologique -->
+
+          <li>
+            <div class="filiere">
+              <details>
+                <summary style="cursor: pointer">
+                  <span>💻 Informatique & Télécommunications</span>
+                </summary>
+
+                <ol type="a">
+                  <li>
+                    Réseau et télécommunication
+                    <p>
+                      Cette formation est axée sur les technologies des réseaux
+                      informatiques et des communications, pour travailler dans
+                      les <strong>télécoms</strong>,
+                      <strong>internet</strong> ou la
+                      <strong>cybersécurité</strong>.
+                    </p>
+                  </li>
+
+                  <li>
+                    Téléinformatique
+                    <p>
+                      parcours qui combine <strong>informatique</strong> et
+                      <strong>télécommunications</strong>, pour développer des
+                      solutions intégrées dans les
+                      <strong>systèmes de communication</strong> et de
+                      <strong>traitement de données</strong>.
+                    </p>
+                  </li>
+                </ol>
+              </details>
+            </div>
+          </li>
+
+          <!-- 5 transport, logistique & commerce-->
+          <li>
+            <div class="filiere">
+              <details>
+                <summary style="cursor: pointer">
+                  <span>transport, logistique & commerce</span>
+                </summary>
+
+                <ol type="a">
+                  <!-- a.    Logistique et Économie de Transport-->
+                  <li>
+                    Logistique et Économie de Transport
+                    <p>
+                      Formation orienté vers l'organisation et la gestion des
+                      flux de marchandises et de transport, essentielle pour
+                      optimiser la chaîne d'approvisionnement.
+                    </p>
+                  </li>
+
+                  <!-- b. Marketing Management -->
+                  <li>
+                    Marketing Management
+                    <p>
+                      Étude des stratégies commerciales, de la gestion de la
+                      relation client et du développement des marchés.
+                    </p>
+                  </li>
+                </ol>
+              </details>
+            </div>
+          </li>
+
+          <!-- 6.   filière polyvalente -->
+          <li>
+            <div class="filiere">
+              <details>
+                <summary style="cursor: pointer">
+                  <span> filière polyvalente</span>
+                </summary>
+
+                <ol type="a">
+                  <!-- a.    Cycle Généraliste-->
+                  <li>
+                    Cycle Généraliste
+                    <p>
+                      Parcours polyvalent qui couvre plusieurs domaines de
+                      l'ingénierie pour former des ingénieurs capables de
+                      s'adapter à des différents secteurs d'activité.
+                    </p>
+                  </li>
+                </ol>
+              </details>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- durée de formation -->
+      <section id="Duree-de-la-formation">
+        <h2>Durée de la formation</h2>
+        <ul>
+          <li>
+            cinq ( 5 ) ans après le <strong>Baccalauréat</strong> (faire deux
+            (2) ens de prépas)
+          </li>
+
+          <li>
+            Trois (03) ans après les <strong>prépas</strong> ou la
+            <strong>Licence</strong>
+          </li>
+        </ul>
+      </section>
+
+      <!-- condition d'accès -->
+      <section id="conditions-acces">
+        <h2>Conditions d'accès au Cycle Ingénieur</h2>
+        <ul>
+          <li>
+            Avoir fait la deuxième (2ème) année prépas
+            (<strong>BIO-BCPST</strong>, <strong>COM-ECG</strong>,
+            <strong>MPSI-TECHNO</strong>, <strong>PCSI</strong>)
+          </li>
+          <li>Avoir obtenu la <strong>Licence</strong></li>
+          <li>Subir un test de sélection ( écrit, oral)</li>
+        </ul>
+      </section>
+
+      <!-- Débouchée -->
+      <section id="debouches">
+        <h2>Débouchés du Cycle Ingénieur</h2>
+        <p>
+          Les titulaires du <strong>Cycle Ingénieur</strong> à
+          <strong>ESETEC</strong> peuvent :
+        </p>
+        <ul>
+          <li>Entrer dans les Entreprises Nationales et Internationales</li>
+          <li>Poursuivre leurs études</li>
+        </ul>
+      </section>
+    </div>
+    <!-- pied de page -->
+    <footer class="pied-page">
+      <div class="footer">
+        <!-- Colonne gauche -->
+        <div class="contact1">
+          <div class="contact">
+            <h2>Situation Géographique & Contacts</h2>
+
+            <div class="yakro">
+              <p>Yamoussoukro, derrière le cafop</p>
+              <p class="alinea">
+                <i class="fa-solid fa-phone"></i
+                ><a href="tel:+2250140097867">0140097867</a> /
+                <a href="tel:+2250707037004">0707037004</a>
+              </p>
+            </div>
+
+            <div class="abidjan">
+              <p>Abidjan, Cocody Allabra</p>
+              <p class="alinea">
+                <i class="fa-solid fa-phone"></i
+                ><a href="tel:+2250101464561">0101464561</a> /
+                <a href="tel:+2250707006328">0707006328</a>
+              </p>
+            </div>
+
+            <div class="reseau">
+              <p>BP 2464 YAMOUSSOUKRO ✉</p>
+              <p>
+                <i class="fa-solid fa-envelope"></i>
+                <a href="mailto:setec@esetec.ci">esetec@esetec.ci</a>
+              </p>
+              <p>
+                <i class="fa-solid fa-globe"></i>
+                <a href="https://www.esetec.ci">www.esetec.ci</a>
+              </p>
+              <p>
+                <i class="fa-brands fa-facebook"></i>
+                <a href="https://www.facebook.com/esetec côte d'ivoire">
+                  esetec côte d'ivoire</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Colonne droite -->
+        <div class="autres-cycles">
+          <h2>Autres Cycles</h2>
+          <div class="cycle1">
+            <span class="losange1 prepa"
+              ><span class="texte anim1"
+                ><a href="index.html" target="_blank">acceuil</a>
+              </span>
+            </span>
+            <span class="losange1 bts"
+              ><span class="texte anim2"
+                ><a href="BTS_ESETEC.html" target="_blank">bts</a></span
+              ></span
+            >
+            <span class="losange1 prepa"
+              ><span class="texte anim5"
+                ><a href="Classes_préparatoires_ESETEC.html" target="_blank">
+                  prépa</a
+                ></span
+              >
+            </span>
+            <span class="losange1 bts"
+              ><span class="texte anim3"
+                ><a href="Licence_Professionnelle_ESETEC.html" target="_blank"
+                  >l-pro</a
+                ></span
+              >
+            </span>
+            <span class="losange1 prepa"
+              ><span class="texte anim4"
+                ><a href="Master_Professionnel_ESETEC.html" target="_blank"
+                  >m-pro</a
+                ></span
+              ></span
+            >
+
+            <span class="losange1 bts"
+              ><span class="texte anim6"
+                ><a href="Doctorat_ESETEC.html" target="_blank">doctorat</a>
+              </span></span
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

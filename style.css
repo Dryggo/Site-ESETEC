@@ -1,0 +1,1119 @@
+/*reinitialisation générale pour eviter les marges / paddings par defaut*/
+* {
+  margin: 0; /* supprime les marges automatique des navigateurs*/
+  padding: 0; /* supprime les espacements internes par defaut*/
+  box-sizing: border-box; /*inclut le padding et la bordure dans la taille totale des elements */
+}
+/* style sur le logo d'ESETEC */
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+body {
+  border-color: black;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 1);
+  margin: 2%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+/* === Adaptation pour petit écran === */
+/* ===============================
+   VERSION TABLETTE / MOBILE
+================================*/
+@media (max-width: 768px) {
+  body {
+    margin: 0;
+    border: none; /* plus de bordure */
+    border-radius: 0; /* plus d'arrondi */
+    box-shadow: none; /* supprime l'ombre */
+    padding: 10px; /* éventuellement réduire le padding */
+  }
+}
+/* conteneur principal ( logo+ruban) */
+.entete {
+  display: flex; /*met les elts (logo+ruban ) en ligne horizontale*/
+  flex-wrap: nowrap; /*pour passer à la ligne*/
+  align-items: center; /*aligne verticalement les elts au centre */
+  justify-content: flex-start;
+  padding: 20px;
+  gap: 20px;
+  background: white;
+  border-bottom: 5px solid #ccc;
+}
+
+/* Ruban contenant le nom et la description de l'école */
+.ruban {
+  background-color: blue;
+  color: white;
+  flex: 1 1 auto; /*prend tout l'espace restant dispo à droite du logo*/
+  display: flex; /*pour aligner les textes verticalements*/
+  flex-direction: column; /* aligne les textes de haut de haut en bas*/
+  justify-content: center;
+  padding-left: 90px; /*met un espace entre le logo et le texte*/
+  /* position: relative; */
+  z-index: 1; /*met le ruban derriere le logo*/
+  gap: 10px;
+  overflow-wrap: break-word; /* coupe les mots trop longs */
+}
+/* style sur l'image insérée logo ESETEC*/
+.logo {
+  width: 180px; /* pour la largeur du logo*/
+  height: auto;
+  max-width: 30vw;
+  margin-right: -60px; /*permet de faire rentrer le logo dans le ruban */
+  object-fit: cover;
+  z-index: 2; /*met le logo au-dessus du ruban*/
+  border-radius: 50%;
+  min-width: 0;
+  flex-shrink: 0; /* ne rétrécit pas */
+}
+
+/* style sur les elements se trouvant dans le ruban */
+.ruban h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-indent: -27px; /*pour le décalage du texte*/
+  letter-spacing: 2px; /*pour l'espacement entre les lettres*/
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.ruban h3 {
+  padding-top: 12px;
+
+  font-size: 1rem;
+  text-indent: -45px; /*pour le décalage du texte*/
+  letter-spacing: 2px; /*pour l'espacement entre les lettres*/
+  font-family: Arial, sans-serif;
+  font-style: italic;
+  font-weight: normal;
+}
+.ruban h4 {
+  padding-top: 2px;
+
+  font-size: 1rem;
+  text-indent: -35px; /*pour le décalage du texte*/
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  font-weight: normal;
+}
+
+.ruban h1,
+.ruban h3,
+.ruban h4 {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.3;
+  margin: 0;
+  white-space: normal; /* permet de revenir à la ligne si nécessaire */
+}
+
+.ruban h4:nth-of-type(1) {
+  text-indent: 50px; /*pour le décalage du texte*/
+}
+
+/* RESPONSIVE pour petits écrans */
+@media (max-width: 600px) {
+  .ruban {
+    /* padding-left: 10px; réduit l'espace pour le logo */
+    gap: 5px;
+  }
+
+  .logo {
+    width: 120px; /* réduit le logo */
+    /* margin-right: 0; plus de marge négative */
+  }
+
+  .ruban h1 {
+    font-size: 1rem;
+    /* text-indent: 0; supprime les décalages négatifs */
+  }
+
+  .ruban h3,
+  .ruban h4 {
+    font-size: 0.5rem;
+    /* text-indent: 0; */
+  }
+
+  .entete {
+    padding: 10px;
+    gap: 10px;
+    /* width: 200vh; */
+    /* height:12vh; */
+  }
+}
+/* style sur l'ecole et les cycle */
+.ecole-cycle {
+  display: flex; /*affiche les elts en ligne*/
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+  gap: 30px; /*pour l'espacement entre les elts*/
+  padding: 20px;
+  margin-top: 90px;
+}
+/* style sur limage d'abidjan et yakro */
+.esetec-yakro-abidjan {
+  position: relative;
+  overflow: hidden; /*pour empêcher le débordement*/
+  flex: 1; /*prend tout l'espace dispo */
+  width: 800px;
+  max-width: 100%; /*la taille max que peut occupée cette partie*/
+  aspect-ratio: 16 / 9;
+  margin-right: 20px; /*pour l'espacement extérieur droite*/
+  margin: auto;
+}
+
+/* style sur la disposition des deux images */
+.esetec {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  object-fit: cover;
+  align-items: center;
+  animation-duration: 12s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+/* animation des deux images  */
+.image1 {
+  animation-name: image1-fade;
+  z-index: 1;
+}
+.image2 {
+  animation-name: image2-fade;
+  z-index: 0;
+}
+@keyframes image1-fade {
+  0%,
+  49.99% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes image2-fade {
+  0%,
+  49.99% {
+    opacity: 0;
+  }
+  50%,
+  100% {
+    opacity: 1;
+  }
+}
+
+.esetec img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+}
+.yamoussoBdukro-abidjan {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* style sur le bloc contenant l'image et le filigrane */
+
+/* style sur les filigranes */
+.filigrane-yakro,
+.filigrane-abidjan {
+  position: absolute;
+  transform: translate(-50%, -50%) /*centre l'ecriture */ rotate(-33deg)
+    /*une rotation de -30dégré*/ skewX(10deg) skewY(20deg); /*pour faire tourner les lettres*/
+  font-size: clamp(12px, 1.6vw, 28px);
+  font-weight: bold;
+  font-family: "Arial Black", Arial;
+  color: blueviolet;
+  opacity: 0.7;
+  pointer-events: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  z-index: 3;
+  letter-spacing: 0.4vw;
+}
+
+.filigrane-yakro {
+  top: 35%; /*éplacement vertical de l'image*/
+  left: 42%; /*déplacement horizontal de l'image */
+}
+.filigrane-abidjan {
+  padding: 6px 10px;
+  top: 30%; /*éplacement vertical de l'image*/
+  left: 45%; /*déplacement horizontal de l'image */
+}
+@media (max-width: 768px) {
+  .filigrane-yakro {
+    top: 70%;
+  }
+}
+/* styles sur les différents cycles de l'école */
+.cycle {
+  display: flex; /*affichage en ligne*/
+  flex-direction: column; /*pile verticale*/
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+  border-left: 9px solid #0077cc;
+  border-right-color: transparent;
+  border-radius: 50px;
+  width: fit-content;
+  max-width: 20%;
+  background: #f4f4f4;
+  padding: clamp(10px, 2vw, 30px);
+  overflow: visible; /*pour permettre aux losanges de se depasser visuelement sans être coupés*/
+  box-sizing: border-box;
+}
+
+/* style sur "Les Cycles d'Étude" */
+.cycle h2 {
+  border: 2px ridge #ff9900;
+  padding: 8px 12px;
+  margin: 10px;
+  border-radius: 50px;
+  color: #004080;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: transparent;
+}
+
+/* style sur les liens dans les cycles */
+.cycle a,
+.cycle1 a {
+  text-decoration: none;
+  color: white;
+}
+
+.cycle a:hover,
+.cycle1 a:hover {
+  color: black;
+}
+
+/* style sur les différents losanges qui contiennent les cycles */
+.losange {
+  width: 65px;
+  aspect-ratio: 1;
+  transform: rotate(45deg); /*tourne le carré de 45°*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* style sur les losange à l'intérieur des losanges */
+.texte {
+  transform: rotate(-45deg); /*tourne le texte à l'intérieur du carré de -45°*/
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-family: sans-serif;
+  font-style: italic;
+  font-size: 0.7rem;
+  position: absolute;
+  width: 100%;
+  max-width: 100px;
+
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+/* couleur de fond des losanges */
+.bts {
+  background-color: #5eb3e4;
+}
+.prepa {
+  background-color: crimson;
+}
+
+/* création de style personnalisé pour chaque texte se trouvant dans chaque losange */
+/* Animations définies */
+@keyframes fade-in {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    transform: rotate(-45deg) translateY(10px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: rotate(-45deg) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes zoom-in {
+  0% {
+    transform: rotate(-45deg) scale(0.9);
+    opacity: 0.6;
+  }
+  100% {
+    transform: rotate(-45deg) scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes rotate-in {
+  0% {
+    transform: rotate(-60deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: rotate(-45deg);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: rotate(-45deg) scale(0.9);
+    opacity: 0.5;
+  }
+  50% {
+    transform: rotate(-45deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(-45deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes flip-in {
+  0% {
+    transform: rotateX(90deg) rotate(-45deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: rotateX(0deg) rotate(-45deg);
+    opacity: 1;
+  }
+}
+
+/* Application des animations — en boucle continue */
+.anim1 {
+  animation: fade-in 2s ease-in-out infinite alternate;
+}
+.anim2 {
+  animation: slide-up 2s ease-in-out infinite alternate;
+}
+.anim3 {
+  animation: zoom-in 2s ease-in-out infinite alternate;
+}
+.anim4 {
+  animation: rotate-in 2s ease-in-out infinite alternate;
+}
+.anim5 {
+  animation: bounce-in 2s ease-in-out infinite alternate;
+}
+.anim6 {
+  animation: flip-in 2s ease-in-out infinite alternate;
+}
+
+/* style sur le message de l'ESETEC */
+.createur {
+  font-size: 19px;
+  font-style: oblique; /* met la phrase de façon oblique*/
+  padding: 20px;
+  margin: 20px;
+  text-align: justify; /*centre le texte*/
+  word-spacing: 5px; /*pour l'espacement entre les mots*/
+  letter-spacing: 1px; /*pour l'espacement entre les lettres*/
+  color: #dc143c;
+  overflow-wrap: break-word;
+}
+
+/* style sur les images */
+.etudiants {
+  display: flex; /*affiche les image sur la même ligne*/
+  gap: 2.5px; /*met un espace entre les images*/
+  align-items: center; /*alignement vertical*/
+  flex-wrap: wrap; /*permet de passer à la ligne si l'écran est small*/
+  margin-bottom: 50px;
+}
+
+/* les image de bordure hexagonale */
+.image {
+  width: clamp(100px, 18%, 180px);
+  aspect-ratio: 1 / 1; /*assure que la hauteur= la largeur*/
+  padding: clamp(2px, 1vw, 10px);
+  box-sizing: border-box;
+  clip-path: polygon(
+    25% 0%,
+    75% 0%,
+    100% 50%,
+    75% 100%,
+    25% 100%,
+    0% 50%
+  ); /*forme hexagonale*/
+}
+/* couleur de fond sur l'image de génie civil */
+.civil {
+  background: turquoise;
+}
+/* couleur de fond sur l'image de IGL1*/
+.igl1 {
+  background: #dc143c;
+}
+
+/* pour l'image de bordure circulaire */
+.ida1 {
+  width: clamp(120px, 20%, 300px); /*la largeur */
+  aspect-ratio: 4 / 3; /*forme ovale*/
+  padding: clamp(2px, 1vw, 10px);
+  border-radius: 50% / 35%;
+  box-sizing: border-box; /*inclut le padding dans la largeur total*/
+  overflow: hidden;
+}
+
+.ida1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /*coupe l'image pour remplir la zone*/
+  border-radius: 50%;
+  display: block;
+}
+
+/* sur toute les images */
+.image-etudiant {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /*garde le ratio et remplit toute la zone*/
+  clip-path: inherit; /*utilise la meme forme que les elts parents*/
+}
+/* style sur le bloc contenant les images de gauche + forage */
+.autres-images {
+  display: flex;
+  gap: 50px;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap; /*permet le passage à la ligne*/
+}
+/* style sur l'image de la conférence et du plan */
+.conference-plan {
+  display: flex;
+  flex-direction: column; /*met les images en colone */
+  gap: 30px; /*pour empêcher le débordement*/
+  max-width: 100%;
+  flex: 1 1 300px;
+}
+
+.conference,
+.plan {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 5%;
+  object-fit: cover;
+  display: block;
+}
+.plan {
+  border: 5px solid red;
+}
+
+/* style sur ESETEC ABIDJAN et sur le forage */
+.abidjan-forage {
+  position: relative;
+  width: 800px;
+  aspect-ratio: 16 / 9;
+  max-width: 100%;
+}
+.forage-abidjan {
+  position: relative;
+}
+
+/* style sur le forage et inoguration */
+.esetec-abidjan {
+  width: 100%;
+  height: 100%;
+  border-bottom-right-radius: 5%; /*pour arrondir le coin droit de l'image*/
+  border: 5px transparent white; /*pordure transparent*/
+  display: flex;
+  object-fit: contain;
+}
+
+.forage {
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  width: 40%; /*400px*/
+  height: auto;
+  border-radius: 5%;
+  border: 5px solid red;
+  object-fit: cover;
+  z-index: 2;
+}
+.filigrane-forage {
+  position: absolute;
+  padding: 6px 10px;
+  top: 50%; /*éplacement vertical de l'image*/
+  left: 30%; /*déplacement horizontal de l'image */
+  transform: translate(-50%, -50%) /*centre l'ecriture */ rotate(-33deg)
+    /*une rotation de -30dégré*/ skewX(10deg) skewY(20deg); /*pour faire tourner les lettres*/
+  font-size: 25px;
+  font-weight: bold;
+  font-family: "Arial Black", Arial;
+  color: blue;
+  opacity: 0.7;
+  pointer-events: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  z-index: 2;
+  letter-spacing: 10px;
+}
+@media (max-width: 768px) {
+  /* Conteneur principal : empilement vertical */
+  .autres-images {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  /* Les deux premières images côte à côte */
+  .conference-plan {
+    width: 100%;
+    flex-direction: row; /* les deux images côte à côte */
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .conference-plan img {
+    width: 48%; /* deux images côte à côte dans .conference-plan */
+    max-width: none; /* annule la limite de 400px */
+    height: auto;
+  }
+
+  /* Troisième image en dessous */
+  .abidjan-forage {
+    position: static; /* s'assurer qu'elle se comporte comme un bloc */
+    width: 100%;
+    max-width: 90%;
+    margin-top: 20px;
+  }
+
+  /* Désactiver la position absolue de la superposition pour mobile */
+  .forage {
+    position: static; /* avant : absolute */
+    width: 45%; /* ajuster si besoin */
+    margin-top: 10px; /* espace sous l'image principale */
+  }
+
+  .filigrane-forage {
+    position: static; /* pour que le texte suive l'image */
+    transform: none;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 5px;
+    letter-spacing: normal;
+  }
+}
+
+/* pour les decorations ajoutee a la page */
+.demi-cercle {
+  width: 60px;
+  height: 22px;
+  background-color: rgba(220, 20, 60, 0.4);
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  position: absolute;
+  transform: rotate(-90deg);
+  opacity: 0.5; /*léger pour ne pas déranger*/
+  filter: blur(1px); /*floue et léger*/
+  transition: transform 2s ease-in-out;
+}
+.carre {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 225, 0, 0.3);
+  position: absolute;
+}
+.ovale {
+  width: 60px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(225, 225, 0, 0.3);
+  position: absolute;
+}
+
+.cercle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 128, 225, 0.3);
+  position: absolute;
+}
+#decorations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: visible;
+}
+.autre .contenu {
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* style sur le slogan */
+.slogan {
+  font-size: 35px;
+  font-weight: normal;
+  color: #dc143c;
+  align-items: center;
+  text-align: center;
+  font-style: italic;
+  word-spacing: 15px;
+  letter-spacing: 5px;
+  margin: 40px;
+  overflow-wrap: break-word;
+}
+
+/* style sur la partie avis des utilisateur */
+/* Bloc principal contenant le formulaire et la liste */
+
+#les-avis {
+  min-height: 50vh;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
+    url("https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=1920&q=80")
+      no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2%;
+  flex-direction: column; /* ✅ aligne tout verticalement */
+}
+
+#avis {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 40px;
+  width: 400px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+#avis h2 {
+  font-size: 2em;
+  margin-bottom: 5%;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+#avis h3 {
+  font-size: 2em;
+  margin-bottom: 2%;
+  color: #4300ff;
+}
+/* ---- Champs du formulaire ---- */
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group i {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  color: #444;
+  font-size: 18px;
+}
+.fa-thumbs-up {
+  color: blue;
+}
+.fa-thumbs-down {
+  color: red;
+}
+.input-group input,
+.input-group textarea {
+  width: 90%;
+  padding: 12px 15px 12px 45px;
+  border-radius: 12px;
+  border: 1px solid #ccc; /* Bordure grise */
+  outline: none;
+  background: rgba(255, 255, 255, 0.85);
+  color: #333;
+  font-size: 1em;
+  transition: all 0.3s ease;
+}
+
+/* lorsqu'on clique dans le champ de saisie */
+.input-group input:focus,
+.input-group textarea:focus {
+  box-shadow: 0 0 8px rgba(37, 117, 252, 0.7);
+}
+
+textarea {
+  resize: none;
+  height: 80px;
+}
+/* Style des boutons J’aime et J’aime pas */
+#votes button {
+  font-size: 1.2em; /* Texte un peu plus grand */
+  margin: 5px 15%; /* Espacement entre les boutons */
+  padding: 8px 15px; /* Taille interne du bouton */
+  border-radius: 8px; /* Coins arrondis */
+  border: none; /* Pas de bordure */
+  cursor: pointer; /* Curseur en main au survol */
+  background: #e0e0e0; /* Couleur gris clair */
+  transition: 0.3s; /* Animation douce au survol */
+}
+
+/* Effet au survol des boutons */
+#votes button:hover {
+  background: #d0d0d0;
+}
+
+/* Zone de texte pour le commentaire */
+#commentaire {
+  height: 80px; /* Hauteur de 80 pixels */
+  margin-top: 10px; /* Espace au-dessus */
+  resize: none; /* Empêche de redimensionner */
+}
+
+/* Bouton d’envoi */
+#envoyerBtn,
+#voirAvisBtn,
+#retourBtn {
+  margin-top: 10px; /* Espace au-dessus */
+  padding: 10px 20px; /* Taille interne */
+  border-radius: 8px; /* Coins arrondis */
+  background-color: #007bff; /* Bleu principal */
+  color: white; /* Texte blanc */
+  border: none; /* Pas de bordure */
+  cursor: pointer; /* Curseur main */
+}
+/* Changement de couleur au survol */
+
+#envoyerBtn:hover,
+#voirAvisBtn:hover,
+#retourBtn:hover {
+  background-color: #0056b3;
+}
+
+/* Message de confirmation ou d’erreur */
+#message {
+  color: green; /* Texte vert par défaut */
+  margin-top: 10px;
+}
+
+/* Bouton sélectionné (like/dislike actif) */
+.selected {
+  background-color: #28a745 !important; /* Vert */
+  color: white;
+}
+
+/* Liste des avis affichés */
+#listeAvis {
+  text-align: left; /* Texte aligné à gauche */
+  margin-top: 20px; /* Espace au-dessus */
+  padding: 0;
+  list-style-type: none; /* Pas de puces */
+}
+
+/* Chaque avis dans la liste */
+#listeAvis li {
+  background: #f8f8f8;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Emoji (👍 ou 👎)  sera ajouter par js*/
+#listeAvis .emoji {
+  font-size: 1.2em;
+}
+
+/* Date du commentaire   sera ajouter par js */
+#listeAvis .date {
+  font-size: 0.8em;
+  color: gray;
+}
+/* animation lorsqu'on clique sur le bouton voir les avis */
+
+/* Animation d’apparition */
+.animation-apparition {
+  animation: fadeIn 0.6s ease forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation de disparition */
+.animation-disparition {
+  animation: fadeOut 0.4s ease forwards;
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* ajouter une petite animation de secousse*/
+
+.animation-secousse {
+  animation: secousse 0.4s ease;
+}
+
+@keyframes secousse {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-5px);
+  }
+  40% {
+    transform: translateX(5px);
+  }
+  60% {
+    transform: translateX(-5px);
+  }
+  80% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* style sur le pied de page */
+.pied-page {
+  background-color: rgb(94, 179, 228, 0.7);
+  padding: 20px;
+  color: darkslategrey;
+  margin: 7px;
+  border: 12px double white;
+}
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* les cycles se trouvant dans le footer */
+.autres-cycles {
+  border-left: 5px solid white; /*bordure gauche*/
+  padding-left: 10%;
+}
+
+/* style sur les p de contact */
+.contact p,
+.contact a {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  white-space: normal;
+}
+
+/* espacement en bas des div */
+.contact > div {
+  margin-bottom: 12px;
+}
+
+/* style sur les h2 dans le footer */
+.contact h2,
+.autres-cycles h2 {
+  border: 2px ridge #ff9900;
+  padding: 0.5rem 1rem;
+  margin-bottom: 15px;
+  border-radius: 50px;
+  color: #004080;
+  font-size: clamp(18px, 2vw, 25px);
+  font-weight: bold;
+  max-width: 100%;
+  word-break: break-word; /*coupe le text s'il est trop grand*/
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+.yakro,
+.abidjan p {
+  margin: 5px; /*espace entre chaque ligne*/
+}
+.pied-page a {
+  text-decoration: none; /*supprime le soulignement des liens */
+  line-height: 1.5; /* met un espacement entre deux lignes */
+  color: white; /*couleur des liens */
+}
+
+.alinea {
+  padding-left: 2rem; /*alinéa de 2cm sur les numéros*/
+}
+
+.contact a:hover {
+  color: #dc143c; /* change la couleur du texte quand on passe la souris dessus */
+}
+.yakro,
+.abidjan {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.yakro a,
+.abidjan a {
+  font-size: 14px;
+}
+
+/* style sur le BP, EMAIL, FACEBOOK */
+.reseau {
+  font-size: 16px;
+  font-weight: bold;
+  font-style: italic;
+}
+.reseau a {
+  font-size: 18px;
+}
+
+/* taille des colonnes */
+.autres-cycles,
+.contact1 {
+  flex: 1 1 400px; /*pour la largeur maximale*/
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: visible;
+}
+.contact {
+  padding-left: clamp(10px, 2vw, 30px);
+  box-sizing: border-box;
+}
+.contact1 {
+  border-bottom: 30px solid white;
+  border-radius: 50px;
+}
+
+/* style sur les cycles se trouvant dans le footer */
+.cycle1 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-left: 0;
+}
+
+/* styles sur les formes se trouvant dans le footer */
+.losange1 {
+  width: 60px;
+  aspect-ratio: 1;
+  transform: rotate(45deg); /*creer une rotation de 45 dégré*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Couleurs spécifiques */
+.fa-facebook {
+  color: #1877f2;
+}
+.fa-whatsapp {
+  color: #25d366;
+}
+.fa-phone {
+  color: #28a745;
+}
+.fa-envelope {
+  color: #ff9800;
+}
+.fa-globe {
+  color: #00bcd4;
+}
+
+.pied-page i {
+  margin-right: 3%;
+}
+/* ============ RESPONSIVE ============ */
+
+/* Tablettes */
+@media (max-width: 1024px) {
+  .footer {
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .autres-cycles,
+  .contact1 {
+    flex: 1 1 100%;
+    border-left: none;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .contact h2,
+  .autres-cycles h2 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Smartphones */
+@media (max-width: 600px) {
+  .pied-page {
+    padding: 15px;
+    border-width: 6px; /* bordure plus fine */
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .autres-cycles,
+  .contact1 {
+    width: 100%;
+    padding: 10px;
+    border-left: none;
+    border-bottom: 2px solid white;
+    border-radius: 20px;
+  }
+
+  .contact h2,
+  .autres-cycles h2 {
+    font-size: 1.1rem;
+  }
+
+  .contact a,
+  .yakro a,
+  .abidjan a {
+    font-size: 0.9rem;
+  }
+
+  .reseau a {
+    font-size: 1rem;
+  }
+}
