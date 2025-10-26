@@ -114,20 +114,24 @@ window.addEventListener("load", () => {
   animer();
 });
 
+
+
+
+
 // POUR LA VILIDATION ET AFFICHAGE DES AVIS
 /* --- Sélection des éléments HTML --- */
-const bouton_aimer = document.getElementById("bouton-aimer"); // Bouton "J’aime"
-const bouton_aime_pas = document.getElementById("bouton-aime-pas"); // Bouton "J’aime pas"
-const envoyerBtn = document.getElementById("envoyerBtn"); // Bouton "Envoyer"
-const message = document.getElementById("message"); // Zone de message
-const nom = document.getElementById("nom"); //zone de saisie
-const commentaire = document.getElementById("commentaire"); // Zone de texte
-const listeAvis = document.getElementById("listeAvis"); // Liste où on affiche les avis
-const voirAvisBtn = document.getElementById("voirAvisBtn"); //pour voir les avis
-const retourBtn = document.getElementById("retourBtn"); //pour retourner au nivau des saisies d'avis
-const Voir_Formulaire = document.getElementById("voir-formulaire"); //pour la partie de voir avis
-const liste_voir_avis = document.getElementById("liste-voir-avis"); //liste des vue
-// const conteneur = document.getElementById("avis");
+const bouton_aimer = document.getElementById("bouton-aimer");
+const bouton_aime_pas = document.getElementById("bouton-aime-pas");
+const envoyerBtn = document.getElementById("envoyerBtn");
+const message = document.getElementById("message");
+const nom = document.getElementById("nom");
+const commentaire = document.getElementById("commentaire");
+const listeAvis = document.getElementById("listeAvis");
+const voirAvisBtn = document.getElementById("voirAvisBtn");
+const retourBtn = document.getElementById("retourBtn");
+const Voir_Formulaire = document.getElementById("voir-formulaire");
+const liste_voir_avis = document.getElementById("liste-voir-avis");
+const form = document.getElementById("form-identification");
 
 /* ======== Désactiver le bouton "Envoyer" au départ ======== */
 envoyerBtn.disabled = true;
@@ -155,149 +159,139 @@ function verifierConditions() {
 
 /* --- Fonction pour afficher tous les avis enregistrés --- */
 function afficherAvis() {
-  const avisList = JSON.parse(localStorage.getItem("avisList") || "[]"); // Récupère la liste depuis le stockage
-  listeAvis.innerHTML = ""; // Vide la liste avant de la remplir
+  const avisList = JSON.parse(localStorage.getItem("avisList") || "[]");
+  listeAvis.innerHTML = "";
 
-  // Si aucun avis n’est enregistré
   if (avisList.length === 0) {
     listeAvis.innerHTML = "<li>Aucun avis pour le moment.</li>";
     return;
   }
 
-  // Parcourt tous les avis à l’envers (le plus récent en haut)
   avisList
     .slice()
     .reverse()
     .forEach((a) => {
-      const li = document.createElement("li"); // Crée un nouvel élément <li>
+      const li = document.createElement("li");
       const emoji =
-        a.type === "like" ? "👍" : a.type === "dislike" ? "👎" : "🤔"; // Choisit un emoji selon le type
-      // Contenu HTML du commentaire
+        a.type === "like" ? "👍" : a.type === "dislike" ? "👎" : "🤔";
       li.innerHTML = `<strong style=" color : #00CAFF; margin: 1%; font-size: 1.5em">${
         a.nom
       }</strong><br><span class="emoji" style=" margin-left: 4%; margin-bottom: 2%;">${emoji}</span> 
-       <span style="color: #8C00FF; font-size: 1.25em; margin-bottom: 2%;"> ${
+       <span style="color: #8C00FF; font-size: 1.25em; margin-bottom: 2%;">${
          a.commentaire || "(Pas de commentaire)"
        }</span><br>
         <span class="date" style="color: #232D3F; margin-left: 4%;">${
           a.date
         }</span>`;
-      listeAvis.appendChild(li); // Ajoute l’élément à la liste
+      listeAvis.appendChild(li);
     });
 }
 
-/* --- Quand on clique sur le bouton "J’aime" --- */
-bouton_aimer.addEventListener("click", () => {
-  bouton_aimer.classList.toggle("selected"); // Active ou désactive le style "sélectionné"
-  bouton_aime_pas.classList.remove("selected"); // Désactive l’autre bouton
+/* --- Sélection des boutons --- */
+bouton_aimer.addEventListener("click", (e) => {
+  e.preventDefault(); // empêche le clic de soumettre le formulaire
+  bouton_aimer.classList.toggle("selected");
+  bouton_aime_pas.classList.remove("selected");
   verifierConditions();
 });
 
-/* --- Quand on clique sur le bouton "J’aime pas" --- */
-bouton_aime_pas.addEventListener("click", () => {
+bouton_aime_pas.addEventListener("click", (e) => {
+  e.preventDefault();
   bouton_aime_pas.classList.toggle("selected");
   bouton_aimer.classList.remove("selected");
   verifierConditions();
 });
-/* ======== Détection des changements de texte ======== */
-commentaire.addEventListener("input", verifierConditions);
 
+commentaire.addEventListener("input", verifierConditions);
 nom.addEventListener("input", verifierConditions);
 
-/* ======== Animation shake si erreur ======== */
-function animerErreur() {
-  envoyerBtn.classList.add("shake");
-  setTimeout(() => {
-    envoyerBtn.classList.remove("shake");
-  }, 400);
-}
+/* --- Quand on soumet le formulaire --- */
+form.addEventListener("submit", (e) => {
+  e.preventDefault(); // On empêche l’envoi auto le temps de vérifier
 
-/* --- Quand on clique sur le bouton "Envoyer" --- */
-envoyerBtn.addEventListener("click", () => {
   const nomVisiteur = nom.value.trim();
   const commentaireTexte = commentaire.value.trim();
   const aChoisiLike = bouton_aimer.classList.contains("selected");
   const aChoisiDislike = bouton_aime_pas.classList.contains("selected");
 
-  // === Vérifications ===
-
-  // verification de la saisie du nom
+  // Vérifications
   if (nomVisiteur === "") {
     message.style.color = "red";
-    message.textContent = "Veuillez entrez votre nom avant d’envoyer.";
+    message.textContent = "Veuillez entrer votre nom avant d’envoyer.";
     return;
   }
 
-  // verification du choix de l'utilisateur
   if (!aChoisiLike && !aChoisiDislike) {
     message.style.color = "red";
     message.textContent = "Veuillez choisir 👍 ou 👎 avant d’envoyer.";
     return;
   }
-  // verification de la saisie du commentaire
+
   if (commentaireTexte === "") {
     message.style.color = "red";
     message.textContent = "Veuillez écrire un commentaire avant d’envoyer.";
     return;
   }
 
-  // Crée un objet "avis" avec le type, le commentaire et la date
+  // Création de l’avis
   const avis = {
     type: aChoisiLike ? "like" : "dislike",
     nom: nomVisiteur,
     commentaire: commentaireTexte,
-    date: new Date().toLocaleString(), // Date et heure locales
+    date: new Date().toLocaleString(),
   };
 
-  // Récupère la liste existante dans localStorage (ou une liste vide)
+  // Sauvegarde locale
   let avisList = JSON.parse(localStorage.getItem("avisList") || "[]");
-
-  // Ajoute le nouvel avis à la liste
   avisList.push(avis);
-
-  // Enregistre à nouveau la liste complète dans localStorage
   localStorage.setItem("avisList", JSON.stringify(avisList));
 
-  // Affiche un message de succès
+  // Ajout d’un champ caché pour le type de vote (envoyé à Web3Forms)
+  const hiddenInput = document.createElement("input");
+  hiddenInput.type = "hidden";
+  hiddenInput.name = "avis_type";
+  hiddenInput.value = aChoisiLike ? "👍 J'aime" : "👎 J'aime pas";
+  form.appendChild(hiddenInput);
+
+  // ✅ Envoi du formulaire vers Web3Forms
+  form.submit();
+
+  // Message de confirmation
   message.style.color = "green";
   message.textContent = "Merci pour votre avis ! 😊";
 
-  // Réinitialise le formulaire
+  // Réinitialisation
   nom.value = "";
   commentaire.value = "";
   bouton_aimer.classList.remove("selected");
   bouton_aime_pas.classList.remove("selected");
+  verifierConditions();
 });
 
-/* ======== Bouton "Voir les avis" ======== */
+/* --- Voir les avis --- */
 voirAvisBtn.addEventListener("click", () => {
-  afficherAvis(); // On charge les avis
-
-  // Animation : fait disparaître le formulaire
+  afficherAvis();
   Voir_Formulaire.classList.add("animation-disparition");
   setTimeout(() => {
     Voir_Formulaire.style.display = "none";
     Voir_Formulaire.classList.remove("animation-disparition");
-
-    // Affiche la vue des avis avec animation
     liste_voir_avis.style.display = "block";
     liste_voir_avis.classList.add("fadeanimation-apparition");
   }, 400);
 });
 
-/* ======== Bouton "Retour" ======== */
+/* --- Retour --- */
 retourBtn.addEventListener("click", () => {
-  // Animation : fait disparaître la liste
   liste_voir_avis.classList.add("animation-disparition");
   setTimeout(() => {
     liste_voir_avis.style.display = "none";
     liste_voir_avis.classList.remove("animation-disparition");
-
-    // Réaffiche le formulaire avec animation
     Voir_Formulaire.style.display = "block";
     Voir_Formulaire.classList.add("animation-apparition");
   }, 400);
 });
 
-/* --- Quand la page se charge, on affiche déjà les anciens avis --- */
+/* --- Chargement initial --- */
 afficherAvis();
+
+
