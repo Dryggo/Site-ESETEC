@@ -8,6 +8,17 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="style.css" />
+
+    <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QH2L55ZPFX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-QH2L55ZPFX');
+  </script>
+    
   </head>
   <body>
     <!-- entête de la page -->
@@ -204,44 +215,69 @@
           <div id="voir-formulaire">
             <h2>Donnez votre avis 👇</h2>
 
-            <!-- le nom -->
-            <div class="input-group">
-              <i class="fa-solid fa-user"></i>
+ <form
+              action="https://api.web3forms.com/submit"
+              method="POST"
+              id="form-identification"
+            >
+              <!-- nom-->
               <input
-                type="text"
-                id="nom"
-                name="nom"
-                placeholder="Nom"
-                required
-                pattern="^[A-Za-zÀ-ÖØ-öø-ÿ\s\-']+$"
-                title="Le nom ne doit contenir que des lettres, espaces ou tirets."
+                type="hidden"
+                name="access_key"
+                value="d6592e0a-e6ce-4638-9c11-a1ae52c0169d"
               />
-            </div>
-            <!-- Boutons J’aime et J’aime pas -->
-            <div id="votes">
-              <button id="bouton-aimer">
-                <i class="fa-solid fa-thumbs-up"></i>
-                <!-- icone aimer -->
-              </button>
-              <button id="bouton-aime-pas">
-                <i class="fa-solid fa-thumbs-down"></i>
-                <!-- ne pas aimer -->
-              </button>
-            </div>
-            <!-- Zone de texte pour le commentaire -->
 
-            <div class="input-group">
-              <i class="fa-solid fa-comment"></i>
-              <textarea
-                id="commentaire"
-                name="commentaire"
-                placeholder="Laissez un commentaire..."
-                required
-              ></textarea>
-            </div>
-            <!-- Bouton pour envoyer l’avis -->
-            <button id="envoyerBtn">Envoyer</button>
+              <!-- Identifier le type de formulaire -->
+              <input
+                type="hidden"
+                name="site"
+                value="dryggo.github.io/Site-ESETEC/"
+              />
+              <input
+                type="hidden"
+                name="subject"
+                value="Nouveau message depuis Dryggo dryggo.github.io/Site-ESETEC/"
+              />
+              <input type="hidden" name="form_type" value="avis" />
 
+              <!-- le nom -->
+              <div class="input-group">
+                <i class="fa-solid fa-user"></i>
+                <input
+                  type="text"
+                  id="nom"
+                  name="nom"
+                  placeholder="Nom"
+                  required
+                  pattern="^[A-Za-zÀ-ÖØ-öø-ÿ\s\-']+$"
+                  title="Le nom ne doit contenir que des lettres, espaces ou tirets."
+                />
+              </div>
+              <!-- Boutons J’aime et J’aime pas -->
+              <div id="votes">
+                <button id="bouton-aimer">
+                  <i class="fa-solid fa-thumbs-up"></i>
+                  <!-- icone aimer -->
+                </button>
+                <button id="bouton-aime-pas">
+                  <i class="fa-solid fa-thumbs-down"></i>
+                  <!-- ne pas aimer -->
+                </button>
+              </div>
+              <!-- Zone de texte pour le commentaire -->
+
+              <div class="input-group">
+                <i class="fa-solid fa-comment"></i>
+                <textarea
+                  id="commentaire"
+                  name="commentaire"
+                  placeholder="Laissez un commentaire..."
+                  required
+                ></textarea>
+              </div>
+              <!-- Bouton pour envoyer l’avis -->
+              <button id="envoyerBtn">Envoyer</button>
+            </form>
             <!-- Message de confirmation -->
             <p id="message"></p>
 
@@ -353,3 +389,4 @@
     <script src="script.js"></script>
   </body>
 </html>
+
